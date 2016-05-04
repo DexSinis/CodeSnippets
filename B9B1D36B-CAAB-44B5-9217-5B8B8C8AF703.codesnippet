@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>prom_delegate</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>StringOrComment</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//
+//  MyUIView.m
+//  sad
+//
+//  Created by DexSinis on 16/5/4.
+//  Copyright © 2016年 DexSinis. All rights reserved.
+//
+
+#import &lt;UIKit/UIKit.h&gt;
+
+@protocol MyUIViewDelegate &lt;NSObject&gt;
+@required
+- (void)func:(NSString *)String;
+@end
+
+@interface MyUIView : UIView
+@property(nonatomic, weak) id&lt;MyUIViewDelegate&gt; delegate;
+
+@end
+
+#import "MyUIView.h"
+
+@interface MyUIView()
+//@property (weak, nonatomic) IBOutlet UILabel *purchaseCountLabel;
+/**
+ *  属性名不能以new开头
+ */
+@property (weak, nonatomic) IBOutlet UIImageView *dealNewView;
+
+@property (weak, nonatomic) IBOutlet UIButton *cover;
+@property (weak, nonatomic) IBOutlet UIImageView *check;
+
+- (IBAction)coverClick;
+
+@end
+
+@implementation MyUIView
+
+
+- (IBAction)coverClick {
+    if ([self.delegate respondsToSelector:@selector(func:)]) {
+        [self.delegate func:@"111"];
+    }
+}
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B9B1D36B-CAAB-44B5-9217-5B8B8C8AF703</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>prom_delegate</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

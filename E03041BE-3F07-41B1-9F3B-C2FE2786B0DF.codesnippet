@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>prom_notification</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassInterfaceMethods</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>Poster.h
+
+//定义一个string常量，用于notification
+
+extern NSString * const PosterDidSomethingNotification;
+
+//与extern const NSString *PosterDidSomethingNotification 的区别
+
+//前者是一个指向immutable string的常量指针。后者是一个指向immutable string的可变指针。
+
+Poster.m
+
+NSString *const PosterDidSomethingNotification = @"PosterDidSomethingNotification";
+
+...
+
+//在notification 中包含 poster
+
+[[NSNotificationCenter defaultCenter] postNotificationName:PosterDidSomethingNotification
+ 
+                                                    object:self];
+
+Observer.m
+
+//import Poster.h
+
+#import "Poster.h"
+
+...
+
+//注册可以接受的notification
+
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(posterDidSomething:)
+ 
+                                             name:PosterDidSomethingNotification  object:nil];
+
+...
+
+-(void) posterDidSomething:(NSNotification *)note{
+    
+    //处理notification
+    
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>E03041BE-3F07-41B1-9F3B-C2FE2786B0DF</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>prom_notification</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
